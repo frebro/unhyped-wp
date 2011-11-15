@@ -1,0 +1,24 @@
+
+/*!
+Theme Name: unHYPED
+Author: Fredrik Broman
+Author URI: http://syn-ack.se/
+Description: Custom theme for unHYPED, loosely based on SYN–ACK Wordpress Boilerplate (https://github.com/frebro/synack-wpbp)
+*/
+
+// Compass
+@import "compass/css3";
+@import "compass/typography";
+
+// Setup
+@import "partials/base";
+@import "partials/fonts";
+
+// Normalize
+@import "partials/normalize";
+
+// Page
+@import "partials/page";
+
+// Media queries
+@import "partials/media";
