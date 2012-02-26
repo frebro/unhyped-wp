@@ -1,46 +1,16 @@
 <?php
 /**
+ * The main template file.
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
  * @package WordPress
  * @subpackage UNHYPED
  */
 
-get_header(); ?>
-
-<div id="main" role="main">
-  <?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post(); ?>
-
-      <article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-        <header>
-          <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to', 'unhyped') ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-          <time datetime="<?php the_time('Y-m-d')?>"><?php the_time('F jS, Y') ?></time>
-          <span class="author"><?php _e('by', 'unhyped') ?> <?php the_author() ?></span>
-        </header>
-        <?php the_content(__('Read the rest of this entry &raquo;', 'unhyped')); ?>
-        <footer>
-          <?php the_tags(__('Tags: ', 'unhyped'), ', ', '<br />'); ?>
-          Posted in <?php the_category(', ') ?>
-          | <?php edit_post_link(__('Edit', 'unhyped'), '', ' | '); ?>
-          <?php comments_popup_link(__('No comments &#187;', 'unhyped'), __('One comment &#187;', 'unhyped'), __('% comments &#187;', 'unhyped')); ?>
-        </footer>
-      </article>
-
-    <?php endwhile; ?>
-
-    <nav>
-      <div><?php next_posts_link(__('&laquo; Older Entries', 'unhyped')) ?></div>
-      <div><?php previous_posts_link(__('Newer Entries &raquo;', 'unhyped')) ?></div>
-    </nav>
-
-  <?php else : ?>
-
-    <h2><?php _e('Not Found', 'unhyped') ?></h2>
-    <p><?php _e('Sorry, but you are looking for something that isn&#x27;t here.', 'unhyped') ?></p>
-    <?php get_search_form(); ?>
-
-  <?php endif; ?>
-</div>
-
-<?php get_footer(); ?>
-
-
+  require_once get_template_directory() . '/index.php';
+?>

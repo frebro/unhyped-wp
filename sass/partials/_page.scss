@@ -1,6 +1,25 @@
 
-
 body {
   background-color: $bg-color;
   color: $text-color;
+  font: #{$base-font-size}/#{$base-line-height} $base-font-family;
 }
+
+a {
+  @include hover-link;
+  color: $link-color;
+}
+
+#container {
+  @include box-sizing( border-box );
+  @include clearfix;
+  margin: $base-vmargin auto;
+  padding: $base-vmargin $base-hmargin;
+  width: 978px;
+}
+
+#header {
+  @include clearfix;
+  margin-bottom: 2 * $base-hmargin;
+}
+

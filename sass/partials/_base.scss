@@ -1,33 +1,21 @@
 
-// Base typography
-$base-font-family: unquote('Helvetica Neue, Arial, Liberation Sans, FreeSans, sans-serif');
-$base-font-size: 16px;
-$base-line-height: 24px;
+$base-font-family                 : unquote('Open Sans, Arial, Liberation Sans, FreeSans, sans-serif');
+$base-font-size                   : 16px;
+$base-line-height                 : 1.5;        // 24px
 
-// Use with $base-font-size to generate the typographic scale
-$font-size-decrement-2: 6px;  // 10
-$font-size-decrement-1: 3px;  // 13
-$font-size-increment-1: 5px;  // 21
-$font-size-increment-2: 10px; // 26
-$font-size-increment-3: 18px; // 34
+$xsmall-font-size                 : 0.6875em;   // ~11px
+$small-font-size                  : 0.8125em;   // ~13px
+$large-font-size                  : 1.3125em;   // ~21px
+$xlarge-font-size                 : 1.625em;    // ~26px
+$xxlarge-font-size                : 2.125em;    // ~34px
 
+$bg-color                         : #eee;
+$text-color                       : #444;
+$link-color                       : #f03;
 
-// Colors
-$text-color: #eee;
-$hard-color: #fff;
-$soft-color: #ccc;
-$bg-color: #222;
-
-$link-color: #f03;
-$link-hover-color: $text-color;
-$link-active-color: $link-hover-color;
-$link-visited-color: $link-color;
-$link-focus-color: $link-hover-color;
-
-$selected-font-color: $bg-color;  // color for selected text
-$selected-background-color: $text-color;  // bg-color for selected text
-
+$base-vmargin                     : 24px; // =$base-line-height
+$base-hmargin                     : $base-vmargin;
 
 // Compass defaults
-$default-border-radius: 2px;
-$default-transition-duration: 0.4s;
+$default-border-radius            : 2px;
+$default-transition-duration      : 0.4s;

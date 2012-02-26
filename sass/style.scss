@@ -1,9 +1,10 @@
 
 /*!
-Theme Name: unHYPED
-Author: Fredrik Broman
-Author URI: http://syn-ack.se/
-Description: Custom theme for unHYPED, loosely based on SYN–ACK Wordpress Boilerplate (https://github.com/frebro/synack-wpbp)
+Theme Name:   unHYPED
+Author:       Fredrik Broman
+Author URI:   http://syn-ack.se/
+
+Template:     synack-wpbp
 */
 
 // Compass
@@ -12,10 +13,15 @@ Description: Custom theme for unHYPED, loosely based on SYN–ACK Wordpress Boil
 
 // Setup
 @import "partials/base";
-@import "partials/fonts";
 
-// Normalize
-@import "partials/normalize";
+// Fonts
+@import url('http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext');
+
+// Parent theme styles
+@import url('../synack-wpbp/style.css');
+@import "../../synack-wpbp/sass/partials/utils";
+@import "../../synack-wpbp/sass/partials/components";
+@import "../../synack-wpbp/sass/partials/wp";
 
 // Page
 @import "partials/page";
