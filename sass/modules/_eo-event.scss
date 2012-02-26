@@ -1,0 +1,13 @@
+
+.eo-events {
+  @include unstyled-list;
+}
+
+.eo-event {
+  .eo-event-thumbnail {
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}

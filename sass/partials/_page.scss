@@ -1,4 +1,7 @@
 
+$debug: false;
+
+
 body {
   background-color: $bg-color;
   color: $text-color;
@@ -13,13 +16,42 @@ a {
 #container {
   @include box-sizing( border-box );
   @include clearfix;
-  margin: $base-vmargin auto;
+  margin: 0 auto;
   padding: $base-vmargin $base-hmargin;
   width: 978px;
 }
 
 #header {
   @include clearfix;
-  margin-bottom: 2 * $base-hmargin;
+  border-bottom: 1px solid $line-color;
+  margin-bottom: $base-hmargin;
+  padding-bottom: $base-hmargin;
+  .site-title {
+    @include replace-linked-text( 'unhyped-logo.png', false, true );
+    float: left;
+    margin-right: $base-hmargin;
+    padding-top: .25em;
+  }
+  .site-description {
+    font-size: $small-font-size;
+    float: left;
+    width: 20em;
+  }
+}
+
+// Debug colors
+@if ( $debug ) {
+  #container {
+    background-color: rgba( gray, .1 );
+  }
+  #header {
+    background-color: rgba( purple, .1 );
+  }
+  #access {
+    background-color: rgba( red, .1 );
+  }
+  #main {
+    background-color: rgba( green, .1 );
+  }
 }
 
