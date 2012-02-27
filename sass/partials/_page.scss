@@ -43,6 +43,45 @@ img {
   }
 }
 
+#access {
+  float: right;
+  a {
+    @include unstyled-link;
+    text-decoration: none;
+  }
+  .menu {
+    @include inline-block;
+    font-size: $small-font-size;
+  }
+  .menu-item {
+    @include inline-block;
+    margin-left: .5 * $base-hmargin;
+    a {
+      @include border-radius(5px);
+      @include transition;
+      background: $line-color;
+      padding: .25 * $base-vmargin .5 * $base-hmargin;
+      &:focus,
+      &:hover {
+        background: $link-color;
+        color: $bg-color;
+      }
+    }
+    &.selected-menu-item,
+    &.current_page_item {
+      a {
+        background: $dark-bg-color;
+        color: $dark-text-color;
+        &:focus,
+        &:hover {
+          background: $link-color;
+          color: $bg-color;
+        }
+      }
+    }
+  }
+}
+
 // Debug colors
 @if ( $debug ) {
   #container {
