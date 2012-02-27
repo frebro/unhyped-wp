@@ -13,6 +13,10 @@ a {
   color: $link-color;
 }
 
+img {
+  @include border-radius;
+}
+
 #container {
   @include box-sizing( border-box );
   @include clearfix;
