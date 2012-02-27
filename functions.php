@@ -17,15 +17,15 @@ global $post;
 
 
 /**
- * Tell WordPress to run unhypedsetup() when the 'after_setup_theme' hook is run.
+ * Tell WordPress to run unhyped_setup() when the 'after_setup_theme' hook is run.
  */
-add_action( 'after_setup_theme', 'unhypedsetup' );
+add_action( 'after_setup_theme', 'unhyped_setup' );
 
-if ( ! function_exists( 'unhypedsetup' ) ):
+if ( ! function_exists( 'unhyped_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
-function unhypedsetup() {
+function unhyped_setup() {
 
   // Add translation support
   $locale = get_locale();
@@ -44,13 +44,13 @@ function unhypedsetup() {
   // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
   add_theme_support( 'post-thumbnails' );
 }
-endif; // unhypedsetup
+endif; // unhyped_setup
 
 
 /**
  * Set some custom styles for admin
  */
-function unhypedadmin_head_styles() {
+function unhyped_admin_head_styles() {
 ?>
 <style>
   // Hide admin menu items
@@ -60,6 +60,6 @@ function unhypedadmin_head_styles() {
 </style>
 <?php
 }
-add_action('admin_head', 'unhypedadmin_head_styles');
+add_action('admin_head', 'unhyped_admin_head_styles');
 
 
