@@ -1,0 +1,104 @@
+
+// Event listing
+.eo-events {
+  @include clearfix;
+  @include unstyled-list;
+  li {
+    margin: 0;
+  }
+  .eo-event {
+    @include box-sizing( border-box );
+    float: left;
+    border-bottom: 1px solid $bg-color;
+    border-right: 1px solid $bg-color;
+    width: 25%;
+    &:first-child {
+      border-bottom: none;
+      width: 50%;
+    }
+    &:nth-child(6n+1) {
+      clear: left;
+    }
+  }
+}
+
+// Single event
+.eo-event {
+  a {
+    @include unstyled-link;
+  }
+  .eo-event-link {
+    display: block;
+    height: 100%;
+    position: relative;
+    html.csstransitions & {
+      @include transition;
+    }
+  }
+  .eo-event-thumbnail {
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  .eo-event-details,
+  .eo-event-datetime,
+  .eo-event-meta {
+    background: black;
+    color: white;
+    left: 0;
+    line-height: $tight-line-height;
+    padding: .5em 1em;
+    position: absolute;
+    right: 0;
+    html.rgba & {
+      background: rgba( black, .6 );
+    }
+  }
+  .eo-event-details {
+    top: 0;
+  }
+  .eo-event-datetime {
+    bottom: 0;
+    font-size: $small-font-size;
+  }
+  .eo-event-meta {
+    top: 0;
+    bottom: 0;
+    font-size: $small-font-size;
+    overflow: hidden;
+    html.csstransitions & {
+      @include transition;
+    }
+  }
+  // 3D transform effects
+  html.csstransforms3d & {
+    .eo-event-thumbnail {
+    }
+    .eo-event-meta {
+      @include rotateY( -180deg );
+    }
+    &:focus,
+    &:hover {
+      .eo-event-link {
+        @include rotateY( -180deg );
+      }
+    }
+  }
+  // Transparency effects
+  html.opacity & {
+    .eo-event-meta {
+      @include opacity( 0 );
+    }
+    &:focus,
+    &:hover {
+      .eo-event-details,
+      .eo-event-datetime {
+        @include opacity( 0 );
+      }
+      .eo-event-meta {
+        @include opacity( 1 );
+      }
+    }
+  }
+}

@@ -8,11 +8,11 @@ Description:    Requires <a href="http://www.harriswebsolutions.co.uk/event-orga
 Template:       synack-wpbp
 */
 
-// Compass
+// Compass framework
 @import "compass/css3";
 @import "compass/typography";
 
-// Setup
+// Base parameters
 @import "partials/base";
 
 // Fonts
@@ -22,13 +22,13 @@ Template:       synack-wpbp
 @import url('../synack-wpbp/style.css');
 @import "../../synack-wpbp/sass/partials/utils";
 @import "../../synack-wpbp/sass/partials/components";
-@import "../../synack-wpbp/sass/partials/wp";
 
-// Page
+// Theme styles
+@import "partials/wp";
 @import "partials/page";
 
 // Modules
-@import "modules/eo-event";
+@import "modules/eo"; // event organizer
 
 // Media queries
 @import "partials/media";
