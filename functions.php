@@ -43,6 +43,7 @@ function unhyped_setup() {
 
   // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
   add_theme_support( 'post-thumbnails' );
+  set_post_thumbnail_size( 600, 340, true );
 }
 endif; // unhyped_setup
 

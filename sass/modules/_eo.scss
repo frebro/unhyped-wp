@@ -1,8 +1,10 @@
 
-// Event listing
-.eo-events {
+// Events wall
+.eo-events-wall {
   @include clearfix;
   @include unstyled-list;
+  border-top: 2px solid $decor-color;
+  padding-top: 2px;
   li {
     margin: 0;
   }
@@ -15,90 +17,100 @@
     &:first-child {
       border-bottom: none;
       width: 50%;
-    }
-    &:nth-child(6n+1) {
-      clear: left;
+      .eo-event-title {
+        font-size: $large-font-size;
+      }
     }
   }
 }
-
-// Single event
-.eo-event {
-  a {
-    @include unstyled-link;
-  }
-  .eo-event-link {
-    display: block;
-    height: 100%;
-    position: relative;
-    html.csstransitions & {
-      @include transition;
-    }
-  }
+.eo-events-wall .eo-event {
   .eo-event-thumbnail {
+    position: relative;
     img {
       height: auto;
       width: 100%;
     }
   }
-  .eo-event-details,
-  .eo-event-datetime,
-  .eo-event-meta {
-    background: black;
-    color: white;
+  .eo-event-details {
+    bottom: 0;
     left: 0;
     line-height: $tight-line-height;
     padding: .5em 1em;
     position: absolute;
     right: 0;
-    html.rgba & {
-      background: rgba( black, .6 );
+    .eo-event-title,
+    .eo-event-datetime {
+      @include inline-block;
+      background-color: $link-color;
+      color: $bg-color;
+      padding: .1em .5em;
+      html.rgba & {
+        background-color: rgba( $link-color, .8 );
+      }
+    }
+    .eo-event-datetime {
+      font-size: $small-font-size;
+    }
+    .eo-event-link {
+      @include inline-block;
+      &:focus,
+      &:hover {
+        .eo-event-title,
+        .eo-event-datetime {
+          background-color: $decor-color;
+        }
+      }
     }
   }
-  .eo-event-details {
-    top: 0;
-  }
-  .eo-event-datetime {
-    bottom: 0;
-    font-size: $small-font-size;
-  }
-  .eo-event-meta {
-    top: 0;
-    bottom: 0;
-    font-size: $small-font-size;
-    overflow: hidden;
-    html.csstransitions & {
+  html.csstransitions & {
+    .eo-event-title,
+    .eo-event-datetime {
       @include transition;
     }
   }
-  // 3D transform effects
-  html.csstransforms3d & {
-    .eo-event-thumbnail {
-    }
-    .eo-event-meta {
-      @include rotateY( -180deg );
-    }
+}
+
+// Events list
+.eo-events-list {
+  @include unstyled-list;
+  border-top: 2px solid $decor-color;
+  padding-top: 2px;
+  width: 50%;
+}
+.eo-events-list .eo-event {
+  @include clearfix;
+  margin-bottom: 0;
+  .eo-event-title {
+    @include inline-block;
+    float: left;
+  }
+  .eo-event-datetime {
+    @include inline-block;
+    color: $mute-color;
+    float: right;
+    font-size: $small-font-size;
+  }
+  .eo-event-link {
+    @include clearfix;
+    border-bottom: 1px solid $line-color;
+    display: block;
+    padding: .25em 1em;
     &:focus,
     &:hover {
-      .eo-event-link {
-        @include rotateY( -180deg );
+      background-color: $decor-color;
+      border-bottom: 1px solid darken( $decor-color, 15% );
+      color: $bg-color;
+      text-decoration: none;
+      .eo-event-title {
+      }
+      .eo-event-datetime {
+        color: $bg-color;
       }
     }
   }
-  // Transparency effects
-  html.opacity & {
-    .eo-event-meta {
-      @include opacity( 0 );
-    }
-    &:focus,
-    &:hover {
-      .eo-event-details,
-      .eo-event-datetime {
-        @include opacity( 0 );
-      }
-      .eo-event-meta {
-        @include opacity( 1 );
-      }
+  html.csstransitions & {
+    .eo-event-link {
+      @include transition;
     }
   }
 }

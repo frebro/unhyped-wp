@@ -3,7 +3,7 @@ $debug: false;
 
 
 body {
-  background-color: $bg-color;
+  background: $bg-color image-url('gradient-noise.png') top center repeat-x;
   color: $text-color;
   font: #{$base-font-size}/#{$base-line-height} $base-font-family;
 }
@@ -27,9 +27,6 @@ img {
 
 #header {
   @include clearfix;
-  border-bottom: 1px solid $line-color;
-  margin-bottom: $base-hmargin;
-  padding-bottom: $base-hmargin;
   .site-title {
     @include replace-linked-text( 'unhyped-logo.png', false, true );
     float: left;
@@ -37,13 +34,14 @@ img {
     padding-top: .25em;
   }
   .site-description {
+    color: $mute-color;
     font-size: $small-font-size;
     float: left;
     width: 20em;
   }
 }
 
-#access {
+#nav-primary {
   float: right;
   a {
     @include unstyled-link;
@@ -52,31 +50,26 @@ img {
   .menu {
     @include inline-block;
     font-size: $small-font-size;
+    margin-top: 10px; // align with logo
   }
   .menu-item {
     @include inline-block;
-    margin-left: .5 * $base-hmargin;
+    margin-left: .25 * $base-hmargin;
     a {
-      @include border-radius(5px);
+      @include border-radius;
       @include transition;
-      background: $line-color;
+      background: $link-color;
+      color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
       &:focus,
       &:hover {
-        background: $link-color;
-        color: $bg-color;
+        background: $decor-color;
       }
     }
     &.selected-menu-item,
     &.current_page_item {
       a {
-        background: $dark-bg-color;
-        color: $dark-text-color;
-        &:focus,
-        &:hover {
-          background: $link-color;
-          color: $bg-color;
-        }
+        background: $decor-color;
       }
     }
   }
