@@ -1,1 +1,1 @@
-jQuery(document).ready(function(){console.log("UNHYPED document load")});
+var unhyped={gmaps_init:function(){console.log("UNHYPED gmaps init");var a={center:new google.maps.LatLng(-34.397,150.644),zoom:8,mapTypeId:google.maps.MapTypeId.ROADMAP};new google.maps.Map(document.getElementById("map_canvas"),a)}};jQuery(document).ready(function(){console.log("UNHYPED document load");unhyped.gmaps_init()});

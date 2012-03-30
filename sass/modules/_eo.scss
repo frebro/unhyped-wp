@@ -34,8 +34,7 @@
   .eo-event-details {
     bottom: 0;
     left: 0;
-    line-height: $tight-line-height;
-    padding: .5em 1em;
+    padding: .25 * $base-vmargin;
     position: absolute;
     right: 0;
     .eo-event-title,
@@ -43,7 +42,7 @@
       @include inline-block;
       background-color: $link-color;
       color: $bg-color;
-      padding: .1em .5em;
+      padding: 0 .25 * $base-vmargin;
       html.rgba & {
         background-color: rgba( $link-color, .8 );
       }
@@ -72,10 +71,21 @@
 
 // Events list
 .eo-events-list {
+  @include box-sizing( border-box );
   @include unstyled-list;
+  border-right: 1px solid transparent;
   border-top: 2px solid $decor-color;
+  float: left;
+  margin: 0;
   padding-top: 2px;
   width: 50%;
+  h2 {
+    border-bottom: 1px solid $line-color;
+    color: $decor-color;
+    font-weight: bold;
+    padding: 0 .25 * $base-hmargin;
+    text-transform: uppercase;
+  }
 }
 .eo-events-list .eo-event {
   @include clearfix;
@@ -94,7 +104,7 @@
     @include clearfix;
     border-bottom: 1px solid $line-color;
     display: block;
-    padding: .25em 1em;
+    padding: .25 * $base-vmargin;
     &:focus,
     &:hover {
       background-color: $decor-color;
@@ -114,3 +124,18 @@
     }
   }
 }
+
+// Events map
+.eo-events-map {
+  @include box-sizing( border-box );
+  border-top: 2px solid $decor-color;
+  float: left;
+  height: 251px;
+  padding-top: 2px;
+  width: 50%;
+}
+#map_canvas {
+  @include box-sizing( border-box );
+  border: 1px solid $line-color;
+}
+

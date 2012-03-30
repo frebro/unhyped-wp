@@ -75,6 +75,12 @@ img {
   }
 }
 
+#complementary {
+  // Aside is temporarily not used
+  display: none;
+  visibility: hidden;
+}
+
 // Debug colors
 @if ( $debug ) {
   #container {
