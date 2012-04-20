@@ -9,7 +9,8 @@
 get_header(); ?>
 
     <section id="featured" role="banner">
-      <h1 class="section-title">Staff Picks</h1>
+      <?php get_template_part( 'social' ); ?>
+      
       <?php
       /* Output a sidebar
        */

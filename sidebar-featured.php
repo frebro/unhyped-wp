@@ -8,6 +8,7 @@
 ?>
 
 <div id="sidebar-featured" class="sidebar" role="banner">
+  <h2 class="section-title">Staff Picks</h2>
   <div class="widget-area">
   <?php
     // If the sidebar has no widgets, then print default content.

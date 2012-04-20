@@ -74,9 +74,42 @@ a {
 
 #featured {
   margin: 2 * $base-vmargin auto;
+  position: relative;
   .section-title {
+    @include inline-block;
     @include replace-text-with-dimensions('picks.png');
-    margin-left: -10px;
+    margin-left: -10px; 
+  }
+  .social {
+    position: absolute;
+    top: .5 * $base-vmargin;
+    right: 0;
+    .title {
+      @include inline-block;
+      @include replace-text-with-dimensions('follow.png');
+      margin: 0;
+    }
+    .services {
+      @include inline-block;
+      @include unstyled-list;
+      margin: 0;
+      .service {
+        @include inline-block;
+        margin: 0 0 0 .5 * $base-vmargin;
+        &.facebook {
+          a {
+            @include replace-text-with-dimensions('facebook.png');
+            display: block;
+          }
+        }
+        &.twitter {
+          a {
+            @include replace-text-with-dimensions('twitter.png');
+            display: block;
+          }
+        }
+      }
+    }
   }
   .widget-area {
     @include clearfix;
