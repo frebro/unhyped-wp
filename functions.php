@@ -17,11 +17,12 @@ global $post;
 
 
 /**
- * Tell WordPress to run unhyped_setup() when the 'after_setup_theme' hook is run.
+ * Imports
  */
-add_action( 'after_setup_theme', 'unhyped_setup' );
+if(@file_exists(dirname(__FILE__) . '/inc/unhyped_featured_event_widget.php')) {
+  include_once dirname(__FILE__) . '/inc/unhyped_featured_event_widget.php';
+}
 
-if ( ! function_exists( 'unhyped_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
@@ -29,38 +30,42 @@ function unhyped_setup() {
 
   // Add translation support
   $locale = get_locale();
-  if( !empty( $locale ) ) {
+  if ( !empty( $locale ) ) {
     $mofile = dirname(__FILE__) . "/lang/" .  $locale . ".mo";
     if(@file_exists($mofile) && is_readable($mofile))
       load_textdomain('unhy', $mofile);
   }
 
-  // Add default posts and comments RSS feed links to <head>.
-  add_theme_support( 'automatic-feed-links' );
-
   // This theme uses wp_nav_menu() in one location.
   register_nav_menu( 'primary', __( 'Primary Menu', 'unhyped' ) );
-
-  // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
-  add_theme_support( 'post-thumbnails' );
-  set_post_thumbnail_size( 600, 340, true );
 }
-endif; // unhyped_setup
-
+add_action( 'after_setup_theme', 'unhyped_setup' );
 
 /**
- * Set some custom styles for admin
+ * Make the front page loop through events instead of posts
  */
-function unhyped_admin_head_styles() {
-?>
-<style>
-  // Hide admin menu items
-  #menu-links, #menu-posts {
-    display:none;
+function unhyped_pre_get_posts($query){
+  global $wp_the_query;
+  if(is_front_page()&&$wp_the_query===$query) {
+    $query->set('post_type','event');
+    $query->set('ignore_sticky_posts','1'); // sticky posts are handled separately
   }
-</style>
-<?php
+  return $query;
 }
-add_action('admin_head', 'unhyped_admin_head_styles');
+add_filter('pre_get_posts', 'unhyped_pre_get_posts');
 
-
+/**
+ * Register our sidebars and widgetized areas.
+ */
+function unhyped_widgets_init() {
+  register_sidebar( array(
+    'name' => __( 'Featured Posts Area', 'unhyped' ),
+    'id' => 'featured',
+    'description' => __( 'The featured sidebar is displayed before the content on the home page', 'unhyped' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+  ) );
+}
+add_action( 'widgets_init', 'unhyped_widgets_init' );

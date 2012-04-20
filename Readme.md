@@ -2,6 +2,8 @@
 
 Custom Wordpress theme for [unHYPED](http://unhyped.com), based on [SYN–ACK Wordpress Boilerplate](https://github.com/frebro/synack-wpbp).
 
+Requires the [Event Organiser plugin](http://www.harriswebsolutions.co.uk/event-organiser/).
+
 ## Components
 
 * [Ruby](http://www.ruby-lang.org/)

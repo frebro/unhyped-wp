@@ -1,16 +1,17 @@
 
-/**
- * Retina display
- */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+
 }
 
 
-/**
- * Widescreen display
- */
-@media all and ( min-width: 1248px ) {
+@media all and ( min-width: 768px ) {
   #container {
-    width: 1218px;
+    width: 748px;
+  }
+}
+
+@media all and ( min-width: 1024px ) {
+  #container {
+    width: 978px;
   }
 }

@@ -1,8 +1,7 @@
 
 $base-font-family                 : unquote('Open Sans, Arial, Liberation Sans, FreeSans, sans-serif');
 $base-font-size                   : 16px;
-$base-line-height                 : 1.5;        // 24px
-$tight-line-height                : 1.2;        // 19px
+$base-line-height                 : 1.25;       // 20px (@16px)
 
 $xsmall-font-size                 : 0.6875em;   // ~11px
 $small-font-size                  : 0.8125em;   // ~13px
@@ -12,18 +11,25 @@ $xxlarge-font-size                : 2.125em;    // ~34px
 
 
 $bg-color                         : #f6f6f8;
-$line-color                       : #ccc;
-$mute-color                       : #888;
-$text-color                       : #444;
-
+$line-color                       : #ddd;
+$mute-color                       : #999;
+$text-color                       : #333;
 $decor-color                      : #f03;
+$link-color                       : #111;
+$link-hover-color                 : $decor-color;
+$link-active-color                : $link-hover-color;
+$link-visited-color               : $link-color;
+$link-focus-color                 : $link-hover-color;
 
-$link-color                       : #222;
 
-
-$base-vmargin                     : 24px; // =$base-line-height
+$base-vmargin                     : $base-font-size * $base-line-height;
 $base-hmargin                     : $base-vmargin;
 
 // Compass defaults
 $default-border-radius            : 2px;
 $default-transition-duration      : 0.4s;
+
+$default-box-shadow-color         : darken($bg-color, 20%);
+$default-box-shadow-h-offset      : 0;
+$default-box-shadow-y-offset      : 2px;
+$default-box-shadow-blur          : 5px;

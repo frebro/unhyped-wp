@@ -23,12 +23,13 @@ Template:       synack-wpbp
 @import "../../synack-wpbp/sass/partials/utils";
 @import "../../synack-wpbp/sass/partials/components";
 
+// Modules
+@import "modules/eo"; // event organizer
+@import "modules/components";
+
 // Theme styles
 @import "partials/wp";
 @import "partials/page";
-
-// Modules
-@import "modules/eo"; // event organizer
 
 // Media queries
 @import "partials/media";

@@ -20,7 +20,6 @@ end
 desc "Creates a distribution javascript file"
 task :dist do
   sprocketize("src", "script.js")
-  'growlnotify -m "Rake dist complete"'
 end
 
 desc "Compiles the distribution javascript"

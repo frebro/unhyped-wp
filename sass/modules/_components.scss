@@ -1,0 +1,53 @@
+@mixin box($_bg-color: white) {
+  @include border-radius;
+  background: $_bg-color;
+  border: 1px solid darken($_bg-color, 10%);
+}
+
+@mixin box-stack($_bg-color: white) {
+  position: relative;
+  z-index: 10;
+  .content {
+    @include border-radius(2 * $default-border-radius);
+    @include box-sizing(border-box);
+    @include single-box-shadow;
+    background: $_bg-color;
+    img {
+      @include border-bottom-radius;
+      max-width: 100%;
+      height: auto;
+    }
+    a {
+      @include unstyled-link;
+    }
+    .title {
+      @include border-top-radius;
+      background: $text-color;
+      color: $bg-color;
+      padding: .25 * $base-vmargin .5 * $base-hmargin;
+    }
+    .excerpt {
+      font-size: $small-font-size;
+    }
+  }
+  &:before,
+  &:after {
+    @include border-radius(2 * $default-border-radius);
+    @include box-sizing(border-box);
+    @include single-box-shadow;
+    background: $_bg-color;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  &:before {
+    z-index: -10;
+    top: 4px;
+  }
+  &:after {
+    z-index: -20;
+    top: 8px;;
+  }
+}

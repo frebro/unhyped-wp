@@ -3,46 +3,42 @@ $debug: false;
 
 
 body {
-  background: $bg-color image-url('gradient-noise.png') top center repeat-x;
+  background: $bg-color image-url('gradient-noise.jpg') top left repeat-x;
   color: $text-color;
   font: #{$base-font-size}/#{$base-line-height} $base-font-family;
 }
 
 a {
+  @include link-colors($link-color, $link-hover-color, $link-active-color, $link-visited-color, $link-focus-color);
   @include hover-link;
-  color: $link-color;
-}
-
-img {
-  @include border-radius;
 }
 
 #container {
   @include box-sizing( border-box );
   @include clearfix;
-  margin: 0 auto;
+  margin: $base-vmargin auto;
   padding: $base-vmargin $base-hmargin;
-  width: 978px;
+  width: 748px;
 }
 
 #header {
-  @include clearfix;
+  border-bottom: 2px solid $decor-color;
+  height: .5 * $base-hmargin + (image-height('unhyped-logo.png') * .5);
+  position: relative;
   .site-title {
     @include replace-linked-text( 'unhyped-logo.png', false, true );
-    float: left;
-    margin-right: $base-hmargin;
-    padding-top: .25em;
+    position: absolute;
   }
   .site-description {
     color: $mute-color;
     font-size: $small-font-size;
-    float: left;
+    position: absolute; left: (image-width('unhyped-logo.png') * .5) + $base-vmargin;
     width: 20em;
   }
 }
 
 #nav-primary {
-  float: right;
+  position: absolute; bottom: 0; right: 0;
   a {
     @include unstyled-link;
     text-decoration: none;
@@ -56,11 +52,12 @@ img {
     @include inline-block;
     margin-left: .25 * $base-hmargin;
     a {
-      @include border-radius;
+      @include border-top-radius;
       @include transition;
       background: $link-color;
       color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
+      display: block;
       &:focus,
       &:hover {
         background: $decor-color;
@@ -75,10 +72,57 @@ img {
   }
 }
 
+#featured {
+  margin: 2 * $base-vmargin auto;
+  .widget-area {
+    @include clearfix;
+    padding: 20px 0; // make sure stacks fit inside
+  }
+  .widget {
+    @include box-stack;
+    float: left;
+    margin-right: 4%;
+    width: 30%;
+    .content {
+      padding: .5 * $base-vmargin .5 * $base-hmargin;
+    }
+    &:first-child {
+      &:before {
+        @include rotate(3deg);
+        left: 2px;
+      }
+      &:after {
+        @include rotate(-2deg);
+        left: -4px;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+      float: right;
+      &:before {
+        @include rotate(3deg);
+        left: -1px;
+      }
+      &:after {
+        @include rotate(-4deg);
+        left: 1px;
+      }
+    }
+    &:nth-child(2) {
+      &:before {
+        @include rotate(-4deg);
+        left: 4px;
+      }
+      &:after {
+        @include rotate(1deg);
+        left: -2px;
+      }
+    }
+  }
+}
+
 #complementary {
-  // Aside is temporarily not used
-  display: none;
-  visibility: hidden;
+  @include box;
 }
 
 // Debug colors
@@ -89,7 +133,13 @@ img {
   #header {
     background-color: rgba( purple, .1 );
   }
-  #access {
+  #nav-primary {
+    background-color: rgba( yellow, .1 );
+  }
+  #featured {
+    background-color: rgba( blue, .1 );
+  }
+  #complementary {
     background-color: rgba( red, .1 );
   }
   #main {
