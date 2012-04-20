@@ -74,9 +74,13 @@ a {
 
 #featured {
   margin: 2 * $base-vmargin auto;
+  .section-title {
+    @include replace-text-with-dimensions('picks.png');
+    margin-left: -10px;
+  }
   .widget-area {
     @include clearfix;
-    padding: 20px 0; // make sure stacks fit inside
+    padding: 20px; // make sure stacks fit inside 
   }
   .widget {
     @include box-stack;
@@ -87,16 +91,18 @@ a {
       padding: .5 * $base-vmargin .5 * $base-hmargin;
     }
     &:first-child {
+      @include translateY(-5px);
       &:before {
         @include rotate(3deg);
         left: 2px;
       }
       &:after {
-        @include rotate(-2deg);
+        @include rotate(-3deg);
         left: -4px;
       }
     }
     &:last-child {
+      @include translateY(-2px);
       margin-right: 0;
       float: right;
       &:before {

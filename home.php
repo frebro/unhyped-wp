@@ -9,6 +9,7 @@
 get_header(); ?>
 
     <section id="featured" role="banner">
+      <h1 class="section-title">Staff Picks</h1>
       <?php
       /* Output a sidebar
        */
