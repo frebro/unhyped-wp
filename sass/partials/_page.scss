@@ -96,16 +96,22 @@ a {
       .service {
         @include inline-block;
         margin: 0 0 0 .5 * $base-vmargin;
+        a {
+          display: block;
+        }
         &.facebook {
           a {
             @include replace-text-with-dimensions('facebook.png');
-            display: block;
           }
         }
         &.twitter {
           a {
             @include replace-text-with-dimensions('twitter.png');
-            display: block;
+          }
+        }
+        &.feed {
+          a {
+            @include replace-text-with-dimensions('feed.png');
           }
         }
       }
@@ -155,6 +161,27 @@ a {
       &:after {
         @include rotate(1deg);
         left: -2px;
+      }
+    }
+  }
+}
+
+#main {
+  position: relative;
+  .hentry {
+    @include box;
+    padding: $base-vmargin $base-hmargin;
+    margin-bottom: .5 * $base-vmargin;
+    float: left;
+    width: 64%;
+  }
+  body.home & {
+    .page-title {
+      position: absolute;
+      top: 0;
+      left: 70%;
+      &.upcoming {
+        @include replace-text-with-dimensions('upcoming.png');
       }
     }
   }

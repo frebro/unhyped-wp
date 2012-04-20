@@ -11,6 +11,8 @@
 
   <?php if ( have_posts() ) : ?>
 
+    <h2 class="page-title upcoming">Upcoming</h2>
+
     <?php /* Start the Loop */ ?>
     <?php while ( have_posts() ) : the_post(); ?>
 
