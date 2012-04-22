@@ -49,7 +49,7 @@ class UNHYPED_Featured_Event_Widget extends WP_Widget {
     $event_id = strip_tags($instance['event_id']);
     ?>
     <p><label for="<?php echo $this->get_field_id('event_id'); ?>"><?php _e('Event ID:', 'unhyped'); ?>
-      <input class="widefat" id="<?php echo $this->get_field_id('event_id'); ?>" name="<?php echo $this->get_field_name('event_id'); ?>" type="text" value="<?php echo attribute_escape($event_id); ?>" /></label></p>
+      <input class="widefat" id="<?php echo $this->get_field_id('event_id'); ?>" name="<?php echo $this->get_field_name('event_id'); ?>" type="text" value="<?php echo esc_attr($event_id); ?>" /></label></p>
     <?php
   }
 
@@ -77,9 +77,24 @@ class UNHYPED_Featured_Event_Widget extends WP_Widget {
     <div class="content event">
       <?php
       $event = get_post($event_id);
+      $venue = eo_get_venue_name(intval(eo_get_venue($event_id)));
+
+      // String representations of date
+      if ( $event->StartDate == date('Y-m-d') ):
+        $datestr = __('Today', 'unhyped');
+      elseif ( $event->StartDate == date('Y-m-d', time()+86400) ):
+        $datestr = __('Tomorrow', 'unhyped');
+      else:
+        $date = new DateTime($event->StartDate);
+        $datestr = $date->format('M j');
+      endif;
+
       echo '<a href="'.post_permalink($event_id).'">';
       echo '<h2 class="entry-title">'.$event->post_title.'</h2>';
       echo get_the_post_thumbnail($event_id, 'medium');
+      echo '<p class="entry-meta"><span class="date">'.$datestr.'</span>';
+      if (!empty($venue)) echo 'at <span class="location">'.$venue.'</span>';
+      echo '</p>';
       echo '<p class="entry-excerpt">'.$event->post_excerpt.'</p>';
       echo '</a>';
       echo '<!--';

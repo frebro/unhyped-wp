@@ -23,8 +23,12 @@
       color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
     }
+    .entry-meta,
     .entry-excerpt {
       font-size: $small-font-size;
+    }
+    .entry-meta {
+      color: $mute-color;
     }
   }
   &:before,

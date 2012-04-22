@@ -22,6 +22,9 @@ global $post;
 if(@file_exists(dirname(__FILE__) . '/inc/unhyped_featured_event_widget.php')) {
   include_once dirname(__FILE__) . '/inc/unhyped_featured_event_widget.php';
 }
+if(@file_exists(dirname(__FILE__) . '/inc/unhyped_staff_listing_widget.php')) {
+  include_once dirname(__FILE__) . '/inc/unhyped_staff_listing_widget.php';
+}
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
