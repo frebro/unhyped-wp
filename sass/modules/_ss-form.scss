@@ -1,0 +1,28 @@
+.ss-form-desc {
+  width: 60%;
+}
+.ss-form {
+  border-top: 2px dotted $line-color;
+  margin-top: $base-vmargin;
+}
+.ss-item {
+  @include clearfix;
+  border-bottom: 2px dotted $line-color;
+  padding-bottom: $base-vmargin;
+}
+.ss-text,
+.ss-paragraph-text {
+  label {
+    float: left;
+    width: 30%;
+  }
+  input,
+  textarea {
+    float: left;
+    width: 60%;
+  }
+}
+.ss-q-help,
+.ss-required-asterisk {
+  @include hidden;
+}

@@ -74,13 +74,13 @@ class UNHYPED_Featured_Event_Widget extends WP_Widget {
       echo $before_title . $title . $after_title;
     ?>
     
-    <div class="content">
+    <div class="content event">
       <?php
       $event = get_post($event_id);
       echo '<a href="'.post_permalink($event_id).'">';
-      echo '<h2 class="title">'.$event->post_title.'</h2>';
+      echo '<h2 class="entry-title">'.$event->post_title.'</h2>';
       echo get_the_post_thumbnail($event_id, 'medium');
-      echo '<p class="excerpt">'.$event->post_excerpt.'</p>';
+      echo '<p class="entry-excerpt">'.$event->post_excerpt.'</p>';
       echo '</a>';
       echo '<!--';
       print_r($event);

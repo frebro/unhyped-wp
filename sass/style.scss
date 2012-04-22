@@ -24,7 +24,8 @@ Template:       synack-wpbp
 @import "../../synack-wpbp/sass/partials/components";
 
 // Modules
-@import "modules/eo"; // event organizer
+@import "modules/eo"; // event organizer plugin
+@import "modules/ss-form"; // wordpress google form plugin
 @import "modules/components";
 
 // Theme styles

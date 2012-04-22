@@ -9,8 +9,9 @@ body {
 }
 
 a {
+  @include transition;
   @include link-colors($link-color, $link-hover-color, $link-active-color, $link-visited-color, $link-focus-color);
-  @include hover-link;
+  text-decoration: none;
 }
 
 #container {
@@ -54,7 +55,7 @@ a {
     a {
       @include border-top-radius;
       @include transition;
-      background: $link-color;
+      background: $text-color;
       color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
       display: block;
@@ -75,6 +76,9 @@ a {
 #featured {
   margin: 2 * $base-vmargin auto;
   position: relative;
+  a {
+    @include unstyled-link;
+  }
   .section-title {
     @include inline-block;
     @include replace-text-with-dimensions('picks.png');
@@ -112,6 +116,11 @@ a {
         &.feed {
           a {
             @include replace-text-with-dimensions('feed.png');
+          }
+        }
+        &.ical {
+          a {
+            @include replace-text-with-dimensions('ical.png');
           }
         }
       }
@@ -167,15 +176,41 @@ a {
 }
 
 #main {
+  @include clearfix;
   position: relative;
   .hentry {
     @include box;
     padding: $base-vmargin $base-hmargin;
     margin-bottom: .5 * $base-vmargin;
-    float: left;
-    width: 64%;
   }
+  // Single view styles
+  body.singular & {
+    float: left;
+    margin-top: 2 * $base-vmargin;
+    width: 64%;
+    .entry-title {
+      @include border-top-radius;
+      background: $text-color;
+      color: $bg-color;
+      padding: .25 * $base-vmargin .5 * $base-hmargin;
+    }
+    img {
+      @include border-bottom-radius;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  // No sidebar view styles
+  body.nosidebar & {
+    float: none;
+    width: auto;
+  }
+  // Home view styles
   body.home & {
+    .event {
+      float: left;
+      width: 64%;
+    }
     .page-title {
       position: absolute;
       top: 0;
@@ -188,7 +223,35 @@ a {
 }
 
 #complementary {
-  @include box;
+  .meta,
+  .sidebar {
+    @include box;
+    padding: $base-vmargin $base-hmargin;
+    margin-bottom: .5 * $base-vmargin;
+  }
+  body.singular & {
+    float: right;
+    margin-top: 2 * $base-vmargin;
+    width: 32%;
+  }
+}
+
+// Forms 
+#main {
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    @include border-radius;
+    border: 1px solid $line-color;
+    padding: .5 * $base-vmargin .5 * $base-hmargin;
+  }
+  input[type='submit'] {
+    @include border-radius;
+    background: $decor-color;
+    border: none;
+    color: white;
+    padding: .25 * $base-vmargin .5 * $base-hmargin;
+  }
 }
 
 // Debug colors

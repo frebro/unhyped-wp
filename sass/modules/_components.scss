@@ -17,16 +17,13 @@
       max-width: 100%;
       height: auto;
     }
-    a {
-      @include unstyled-link;
-    }
-    .title {
+    .entry-title {
       @include border-top-radius;
       background: $text-color;
       color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
     }
-    .excerpt {
+    .entry-excerpt {
       font-size: $small-font-size;
     }
   }
