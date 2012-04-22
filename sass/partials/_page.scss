@@ -197,6 +197,24 @@ blockquote {
     @include box;
     padding: $base-vmargin $base-hmargin;
     margin-bottom: .5 * $base-vmargin;
+    .entry-meta,
+    .entry-excerpt {
+      font-size: $small-font-size;
+    }
+    .entry-meta {
+      a {
+        @include unstyled-link;
+      }
+      color: $mute-color;
+      .address {
+        &:before {
+          content: '→';
+        }
+      }
+    }
+    .meta-nav {
+      @include hidden;
+    }
   }
   // Single view styles
   body.singular & {
@@ -209,10 +227,12 @@ blockquote {
       color: $bg-color;
       padding: .25 * $base-vmargin .5 * $base-hmargin;
     }
-    img {
-      @include border-bottom-radius;
-      max-width: 100%;
-      height: auto;
+    .post-thumbnail {
+      img {
+        @include border-bottom-radius;
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
   // No sidebar view styles
@@ -225,6 +245,14 @@ blockquote {
     .event {
       float: left;
       width: 64%;
+      .post-thumbnail {
+        float: right;
+        margin-top: .5 * $base-vmargin;
+        margin-left: $base-hmargin;
+        img {
+          @include border-radius;
+        }
+      }
     }
     .page-title {
       position: absolute;
@@ -238,6 +266,13 @@ blockquote {
 }
 
 #complementary {
+  .meta {
+    img {
+      @include border-radius;
+      width: 100%;
+      height: auto;
+    }
+  }
   .meta,
   .sidebar {
     @include box;

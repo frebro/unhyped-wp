@@ -93,13 +93,10 @@ class UNHYPED_Featured_Event_Widget extends WP_Widget {
       echo '<h2 class="entry-title">'.$event->post_title.'</h2>';
       echo get_the_post_thumbnail($event_id, 'medium');
       echo '<p class="entry-meta"><span class="date">'.$datestr.'</span>';
-      if (!empty($venue)) echo 'at <span class="location">'.$venue.'</span>';
+      if (!empty($venue)) echo ' at <span class="location">'.$venue.'</span>';
       echo '</p>';
       echo '<p class="entry-excerpt">'.$event->post_excerpt.'</p>';
       echo '</a>';
-      echo '<!--';
-      print_r($event);
-      echo '-->';
       ?>
     </div>
 

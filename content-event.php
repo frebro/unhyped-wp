@@ -14,49 +14,53 @@
       <a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'synack' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
       <?php endif; ?>
 
-        <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+      <?php if ( !is_home() ) : // print title above thumbnail when not on the home page ?>
+      <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+      <?php endif; // !is_home() ?>
 
-        <?php if ( !is_home() && has_post_thumbnail() ) : // check if the post has a Post Thumbnail assigned to it. ?>
-        <figure class="post-thumbnail">
-          <?php
-            if ( is_singular() ) : // large thumbnails for singular posts
-              the_post_thumbnail('large');
+      <?php if ( has_post_thumbnail() ) : // check if the post has a Post Thumbnail assigned to it. ?>
+      <figure class="post-thumbnail">
+        <?php
+          if ( is_home() ):
+            the_post_thumbnail('thumbnail');
+          else:
+            the_post_thumbnail('large');
+          endif;
+        ?>
+      </figure>
+      <?php endif; // has_post_thumbnail() ?>
 
-              // print thumbnail title and/or description, if available
-              $thumbnail = get_post( get_post_thumbnail_id( $post->ID ) );
-              if ( $thumbnail->post_excerpt || $thumbnail->post_content ) :
-          ?>
-          <figcaption class="post-thumbnail-caption">
-          <?php
-            if ( $thumbnail->post_excerpt )
-              echo '<span class="post-thumbnail-title">'.$thumbnail->post_excerpt.'</span>';
-
-            if ( $thumbnail->post_excerpt && $thumbnail->post_content )
-              echo '<span class="sep">&rsaquo;</span>';
-
-            if ( $thumbnail->post_content )
-              echo '<span class="post-thumbnail-description">'.$thumbnail->post_content.'</span>';
-          ?>
-          </figcaption>
-          <?php endif; // $thumbnail->post_excerpt || $thumbnail->post_content ?>
-
-          <?php
-            else : // medium thumbnails for non-singular posts
-              the_post_thumbnail('medium');
-            endif; // is_singular()
-          ?>
-        </figure>
-        <?php endif; // is_home() && has_post_thumbnail() ?>
+      <?php if ( is_home() ) : // print title below thumbnail on home page ?>
+      <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+      <?php endif; // is_home() ?>
 
       <?php if ( !is_singular() ) : // close title and thumbnail link ?>
       </a>
-      <?php endif; ?>
+      <?php endif; //!is_singular() ?>
 
-      <?php if ( 'post' == get_post_type() ) : // print publish info ?>
-      <p class="pub-info">
-        <?php synack_posted_on(); ?>
-      </p>
-      <?php endif; // 'post' == get_post_type() ?>
+      <?php
+        // Print the meta info on the home page
+        if (is_home()):
+
+          // The date strings
+          if ( eo_get_the_start('Y-m-d') == date('Y-m-d') ):
+            $datestr = __('Today', 'unhyped');
+          elseif ( eo_get_the_start('Y-m-d') == date('Y-m-d', time()+86400) ):
+            $datestr = __('Tomorrow', 'unhyped');
+          else:
+            $datestr = eo_get_the_start('Y-m-d');
+          endif;
+
+          // The venue strings
+          $venue = eo_get_venue_name();
+          $address = eo_get_venue_address();
+
+          echo '<p class="entry-meta"><span class="date">'.$datestr.'</span>';
+          if (!empty($venue)) echo ' at <span class="location">'.$venue.'</span>';
+          if (!empty($address['address']) && !empty($address['postcode'])) echo ' <a class="address" href="http://maps.google.com/maps?q='.urlencode($address['address'].' '.$address['postcode']).'">'.$address['address'].'</a>';
+
+        endif; // is_home()
+      ?>
 
     </header><!-- .entry-header -->
 
@@ -65,7 +69,7 @@
         if ( is_singular() ) :
           the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'synack' ) );
         else :
-          the_excerpt();
+          the_pretty_excerpt();
         endif;
       ?>
     </div><!-- .entry-content -->
