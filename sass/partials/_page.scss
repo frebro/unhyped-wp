@@ -151,6 +151,8 @@ blockquote {
     margin-right: 4%;
     width: 30%;
     .content {
+      @include transition;
+      @include scale(.94);
       padding: .5 * $base-vmargin .5 * $base-hmargin;
     }
     &:first-child {
@@ -162,6 +164,18 @@ blockquote {
       &:after {
         @include rotate(-3deg);
         left: -4px;
+      }
+      &:hover,
+      &:focus {
+        &:before {
+          left: 7px;
+        }
+        &:after {
+          left: -9px;
+        }
+        .content {
+          @include scale(1);
+        }
       }
     }
     &:last-child {
@@ -176,6 +190,18 @@ blockquote {
         @include rotate(-4deg);
         left: 1px;
       }
+      &:hover,
+      &:focus {
+        &:before {
+          left: -5px;
+        }
+        &:after {
+          left: 5px;
+        }
+        .content {
+          @include scale(1);
+        }
+      }
     }
     &:nth-child(2) {
       &:before {
@@ -185,6 +211,18 @@ blockquote {
       &:after {
         @include rotate(1deg);
         left: -2px;
+      }
+      &:hover,
+      &:focus {
+        &:before {
+          left: 8px;
+        }
+        &:after {
+          left: -6px;
+        }
+        .content {
+          @include scale(1);
+        }
       }
     }
   }

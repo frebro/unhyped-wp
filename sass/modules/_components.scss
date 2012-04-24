@@ -36,6 +36,7 @@
     @include border-radius(2 * $default-border-radius);
     @include box-sizing(border-box);
     @include single-box-shadow;
+    @include transition;
     background: $_bg-color;
     content: "";
     display: block;
@@ -51,4 +52,5 @@
     z-index: -20;
     top: 8px;;
   }
+  // hover animation
 }
