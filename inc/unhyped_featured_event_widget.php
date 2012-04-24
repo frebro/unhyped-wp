@@ -104,4 +104,3 @@ class UNHYPED_Featured_Event_Widget extends WP_Widget {
     echo $after_widget;
   }
 }
-?>

@@ -45,17 +45,17 @@ class UNHYPED_Staff_Listing_Widget extends WP_Widget {
   }
 
   function form($instance) {
-    $instance = wp_parse_args( (array) $instance, array( 'user_id_csv' => '' ) );
-    $user_id_csv = strip_tags($instance['user_id_csv']);
+    $instance = wp_parse_args( (array) $instance, array( 'user_ids_str' => '' ) );
+    $user_ids_str = strip_tags($instance['user_ids_str']);
     ?>
-    <p><label for="<?php echo $this->get_field_id('user_id_csv'); ?>"><?php _e('User IDs (comma separated):', 'unhyped'); ?>
-      <input class="widefat" id="<?php echo $this->get_field_id('user_id_csv'); ?>" name="<?php echo $this->get_field_name('user_id_csv'); ?>" type="text" value="<?php echo esc_attr($user_id_csv); ?>" /></label></p>
+    <p><label for="<?php echo $this->get_field_id('user_ids_str'); ?>"><?php _e('User IDs (comma separated):', 'unhyped'); ?>
+      <input class="widefat" id="<?php echo $this->get_field_id('user_ids_str'); ?>" name="<?php echo $this->get_field_name('user_ids_str'); ?>" type="text" value="<?php echo esc_attr($user_ids_str); ?>" /></label></p>
     <?php
   }
 
   function update($new_instance, $old_instance) {
     $instance = $old_instance;
-    $instance['user_id_csv'] = strip_tags($new_instance['user_id_csv']);
+    $instance['user_ids_str'] = strip_tags($new_instance['user_ids_str']);
     return $instance;
   }
 
@@ -63,10 +63,11 @@ class UNHYPED_Staff_Listing_Widget extends WP_Widget {
     // outputs the content of the widget
     extract( $args );
 
-    if (empty($instance['user_id_csv']))
+    if (empty($instance['user_ids_str']))
       return;
 
-    $user_id_csv = apply_filters('widget_post_id', $instance['user_id_csv']);
+    $user_ids_str = apply_filters('widget_post_id', $instance['user_ids_str']);
+    $user_ids = explode(',', $user_ids_str);
 
     echo $before_widget;
 
@@ -76,7 +77,13 @@ class UNHYPED_Staff_Listing_Widget extends WP_Widget {
     
     <div class="content">
       <?php
-        echo $user_id_csv;
+        if ( !empty($user_ids) ):
+          echo '<ul class="staff-listing"><h2 class="list-title">unHYPED staff</h2>';
+          foreach( $user_ids as $user_id ):
+            echo '<li class="staff-member">'.the_user_bio($user_id).'</li>';
+          endforeach;
+          echo '</ul>';
+        endif;
       ?>
     </div>
 
@@ -84,4 +91,3 @@ class UNHYPED_Staff_Listing_Widget extends WP_Widget {
     echo $after_widget;
   }
 }
-?>

@@ -74,6 +74,23 @@ function unhyped_widgets_init() {
 add_action( 'widgets_init', 'unhyped_widgets_init' );
 
 /**
+ * Author bio format
+ */
+function the_user_bio($user_id) {
+  if (empty($user_id)) return;
+
+  $userdata = get_userdata($user_id);
+
+  $html_str = '<div id="userbio-'.$user_id.'" class="userbio">';
+  $html_str .= get_avatar($user_id, 120);
+  $html_str .= '<span class="user-name">'.$userdata->display_name.'</span>';
+  $html_str .= '<span class="user-description">'.$userdata->user_description.'</span>';
+  $html_str .= '</div>';
+
+  return $html_str;
+}
+
+/**
  * A prettier excerpt template tag
  * It cuts off at the end of the sentence preceding the cut-off character.
  */

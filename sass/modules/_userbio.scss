@@ -1,0 +1,19 @@
+.userbio {
+  @include clearfix;
+  font-size: $small-font-size;
+  .avatar {
+    display: block;
+    float: left;
+    margin-bottom: .25 * $base-vmargin;
+    margin-right: .5 * $base-hmargin;
+    width: 60px;
+    height: auto;
+  }
+  .user-name {
+    display: block;
+  }
+  .user-description {
+    color: $mute-color;
+    display: block;
+  }
+}

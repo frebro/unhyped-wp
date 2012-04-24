@@ -34,7 +34,7 @@ blockquote {
   @include clearfix;
   margin: $base-vmargin auto;
   padding: $base-vmargin $base-hmargin;
-  width: 748px;
+  width: 978px; 
 }
 
 #header {
@@ -96,7 +96,7 @@ blockquote {
   }
   .section-title {
     @include inline-block;
-    @include replace-text-with-dimensions('picks.png');
+    @include replace-linked-text('picks.png', true, true);
     margin-left: -10px; 
   }
   .social {
@@ -105,7 +105,7 @@ blockquote {
     right: 0;
     .title {
       @include inline-block;
-      @include replace-text-with-dimensions('follow.png');
+      @include replace-linked-text('follow.png', true, true);
       margin: 0;
     }
     .services {
@@ -120,22 +120,22 @@ blockquote {
         }
         &.facebook {
           a {
-            @include replace-text-with-dimensions('facebook.png');
+            @include replace-linked-text('facebook.png', true, true);
           }
         }
         &.twitter {
           a {
-            @include replace-text-with-dimensions('twitter.png');
+            @include replace-linked-text('twitter.png', true, true);
           }
         }
         &.feed {
           a {
-            @include replace-text-with-dimensions('feed.png');
+            @include replace-linked-text('feed.png', true, true);
           }
         }
         &.ical {
           a {
-            @include replace-text-with-dimensions('ical.png');
+            @include replace-linked-text('ical.png', true, true);
           }
         }
       }
@@ -259,7 +259,7 @@ blockquote {
       top: 0;
       left: 70%;
       &.upcoming {
-        @include replace-text-with-dimensions('upcoming.png');
+        @include replace-linked-text('upcoming.png', true, true);
       }
     }
   }
@@ -278,6 +278,16 @@ blockquote {
     @include box;
     padding: $base-vmargin $base-hmargin;
     margin-bottom: .5 * $base-vmargin;
+  }
+  .staff-listing {
+    @include unstyled-list;
+    margin: 0;
+    .list-title {
+      font-weight: bold;
+    }
+    .staff-member {
+      margin-top: .5 * $base-vmargin;
+    }
   }
   body.singular & {
     float: right;
