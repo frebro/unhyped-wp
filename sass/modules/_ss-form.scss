@@ -4,6 +4,9 @@
 .ss-form {
   border-top: 2px dotted $line-color;
   margin-top: $base-vmargin;
+  ul {
+    @include unstyled-list;
+  }
 }
 .ss-item {
   @include clearfix;
