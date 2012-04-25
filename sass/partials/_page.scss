@@ -266,10 +266,14 @@ blockquote {
       padding: .25 * $base-vmargin .5 * $base-hmargin;
     }
     .post-thumbnail {
+      background: $text-color;
+      color: $bg-color;
       img {
         @include border-bottom-radius;
-        max-width: 100%;
+        display: block;
         height: auto;
+        margin: 0 auto;
+        max-width: 100%;
       }
     }
   }
