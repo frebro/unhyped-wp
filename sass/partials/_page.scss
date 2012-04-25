@@ -304,18 +304,17 @@ blockquote {
 }
 
 #complementary {
-  .meta {
-    img {
-      @include border-radius;
-      width: 100%;
-      height: auto;
-    }
-  }
-  .meta,
   .sidebar {
-    @include box;
-    padding: $base-vmargin $base-hmargin;
-    margin-bottom: .5 * $base-vmargin;
+    .widget {
+      @include box;
+      padding: $base-vmargin $base-hmargin;
+      margin-bottom: .5 * $base-vmargin;
+      img {
+        @include border-radius;
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
   .staff-listing {
     @include unstyled-list;
